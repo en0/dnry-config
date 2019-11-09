@@ -14,7 +14,7 @@ class IConfigurationSection(ABC):
 
 class IConfigurationSource(ABC):
     @abstractmethod
-    def load(self) -> dict:
+    def load(self, fact: "IConfigurationFactory") -> dict:
         raise NotImplemented()
 
 

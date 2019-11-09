@@ -4,7 +4,7 @@ from dnry_configuration.configuration_factory import ConfigurationFactory
 from dnry_configuration.memory import InMemorySource
 
 
-class TestInMemorySource(unittest.TestCase):
+class TestFactory(unittest.TestCase):
     def test_single_key(self):
         fact = ConfigurationFactory()
         fact.add_source(InMemorySource({"a": 1}))
