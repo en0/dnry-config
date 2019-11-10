@@ -12,6 +12,8 @@ setup(
     author='Ian Laird',
     author_email='irlaird@gmail.com',
     url='https://github.com/irlaird/dnry-configuration',
+    download_url="https://github.com/en0/dnry-configuration/archive/v0.1.0-alpha.tar.gz",
+    keywords=['configuration', 'dnry'],
     description='Multi-source configuration library',
     long_description=long_description,
     long_description_content_type="text/markdown",
