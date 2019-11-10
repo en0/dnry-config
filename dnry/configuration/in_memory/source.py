@@ -1,4 +1,4 @@
-from dnry_configuration.types import IConfigurationSource, IConfigurationFactory
+from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
 
 
 class InMemorySource(IConfigurationSource):
@@ -6,5 +6,5 @@ class InMemorySource(IConfigurationSource):
     def __init__(self, data: dict):
         self.__data = data
 
-    def load(self, fact: IConfigurationFactory) -> dict:
+    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
         return self.__data

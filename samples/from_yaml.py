@@ -1,7 +1,5 @@
-from argparse import ArgumentParser
-
-from dnry_configuration.configuration_factory import ConfigurationFactory
-from dnry_configuration.yml import YamlSource
+from dnry.configuration import ConfigurationFactory
+from dnry.configuration.yaml import YamlSource
 
 
 def main():

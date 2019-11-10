@@ -1,0 +1,1 @@
+from dnry.configuration.in_memory.source import InMemorySource

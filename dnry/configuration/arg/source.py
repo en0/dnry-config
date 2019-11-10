@@ -1,7 +1,7 @@
 from typing import List
 
-from dnry_configuration.helpers import explode
-from dnry_configuration.types import IConfigurationSource, IConfigurationFactory
+from dnry.configuration.helpers import explode
+from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
 from argparse import ArgumentParser
 
 
@@ -11,6 +11,6 @@ class ArgumentSource(IConfigurationSource):
         self.__argv = argv
         self.__ap = argument_parser
 
-    def load(self, fact: IConfigurationFactory) -> dict:
+    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
         opts = self.__ap.parse_args(self.__argv)
         return explode(vars(opts))

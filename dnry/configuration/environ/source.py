@@ -1,7 +1,7 @@
 import os
 
-from dnry_configuration.helpers import explode
-from dnry_configuration.types import IConfigurationSource, IConfigurationFactory
+from dnry.configuration.helpers import explode
+from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
 
 
 class EnvironmentSource(IConfigurationSource):
@@ -18,7 +18,7 @@ class EnvironmentSource(IConfigurationSource):
     def __init__(self, prefix: str = None):
         self.__prefix = prefix or ""
 
-    def load(self, fact: IConfigurationFactory) -> dict:
+    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
         val = {
             key[len(self.__prefix):].lstrip('_'): value
             for key, value

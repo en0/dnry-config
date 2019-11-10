@@ -1,8 +1,8 @@
 import os
 from argparse import ArgumentParser
 
-from dnry_configuration.configuration_factory import ConfigurationFactory
-from dnry_configuration.enviroment import EnvironmentSource
+from dnry.configuration import ConfigurationFactory
+from dnry.configuration.environ import EnvironmentSource
 
 
 def main():

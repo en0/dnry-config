@@ -1,7 +1,7 @@
 import unittest
 
-from dnry_configuration.configuration_factory import ConfigurationFactory
-from dnry_configuration.memory import InMemorySource
+from dnry.configuration import ConfigurationFactory
+from dnry.configuration.in_memory import InMemorySource
 
 
 class TestFactory(unittest.TestCase):

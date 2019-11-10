@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
 
-from dnry_configuration.arg import ArgumentSource
-from dnry_configuration.configuration_factory import ConfigurationFactory
-from dnry_configuration.enviroment import EnvironmentSource
-from dnry_configuration.memory import InMemorySource
-from dnry_configuration.yml import YamlSource
+from dnry.configuration import ConfigurationFactory
+from dnry.configuration.arg import ArgumentSource
+from dnry.configuration.environ import EnvironmentSource
+from dnry.configuration.in_memory import InMemorySource
+from dnry.configuration.yaml import YamlSource
 
 
 def main():

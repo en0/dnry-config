@@ -1,8 +1,8 @@
 import unittest
 from argparse import ArgumentParser
 
-from dnry_configuration.arg import ArgumentSource
-from dnry_configuration.configuration_factory import ConfigurationFactory
+from dnry.configuration.arg import ArgumentSource
+from dnry.configuration import ConfigurationFactory
 
 
 class TestArgSource(unittest.TestCase):
