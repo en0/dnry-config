@@ -1,13 +1,13 @@
 from argparse import ArgumentParser
 
-from dnry.configuration import ConfigurationFactory, IConfigurationSection, IConfigurationFactory
-from dnry.configuration.arg import ArgumentSource
-from dnry.configuration.delegate import DelegateSource
-from dnry.configuration.in_memory import InMemorySource
-from dnry.configuration.yaml import YamlSource
+from dnry.config import ConfigFactory, IConfigSection, IConfigFactory
+from dnry.config.arg import ArgumentSource
+from dnry.config.delegate import DelegateSource
+from dnry.config.in_memory import InMemorySource
+from dnry.config.yaml import YamlSource
 
 
-def add_sources(fact: IConfigurationFactory, conf: IConfigurationSection):
+def add_sources(fact: IConfigFactory, conf: IConfigSection):
     # Add defaults
     fact.add_source(InMemorySource({"greeting": "Hello"}))
 
@@ -25,7 +25,7 @@ def main():
     ap = ArgumentParser()
     ap.add_argument("--config")
     ap.add_argument("--name", default="world")
-    fact = ConfigurationFactory()
+    fact = ConfigFactory()
     fact.add_source(ArgumentSource(ap))
     fact.add_source(DelegateSource(add_sources))
     conf = fact.build()

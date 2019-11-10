@@ -1,17 +1,17 @@
 import yaml
 from typing import Union, List
 from os.path import exists
-from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
+from dnry.config.types import IConfigSource, IConfigFactory, IConfigSection
 
 
-class YamlSource(IConfigurationSource):
+class YamlSource(IConfigSource):
     """Read configuration values from a yaml file."""
     def __init__(self, path: Union[str, List[str]], required: bool = True, **kwargs):
         self.__paths = path if isinstance(path, list) else [path]
         self.__required = required
         self.__loader = kwargs.get("loader", yaml.SafeLoader)
 
-    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
+    def load(self, fact: IConfigFactory, conf: IConfigSection) -> dict:
         path = self.__get_first_existing_path()
         if path is None and self.__required:
             paths = ",".join(self.__paths)

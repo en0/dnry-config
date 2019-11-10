@@ -1,1 +1,1 @@
-from dnry.configuration.yaml.source import YamlSource
+from dnry.config.yaml.source import YamlSource

@@ -2,13 +2,13 @@ from abc import ABC, abstractmethod
 from typing import Union
 
 
-class IConfigurationSection(ABC):
+class IConfigSection(ABC):
     @abstractmethod
     def get(self, key: str) -> any:
         raise NotImplemented()
 
     @abstractmethod
-    def get_section(self, key: str) -> Union["IConfigurationSection", None]:
+    def get_section(self, key: str) -> Union["IConfigSection", None]:
         raise NotImplemented()
 
     @abstractmethod
@@ -16,21 +16,21 @@ class IConfigurationSection(ABC):
         raise NotImplemented()
 
 
-class IConfigurationSource(ABC):
+class IConfigSource(ABC):
     @abstractmethod
-    def load(self, fact: "IConfigurationFactory", conf: IConfigurationSection) -> dict:
+    def load(self, fact: "IConfigFactory", conf: IConfigSection) -> dict:
         raise NotImplemented()
 
 
-class IConfigurationFactory(ABC):
+class IConfigFactory(ABC):
     @abstractmethod
-    def add_source(self, source: IConfigurationSource) -> None:
+    def add_source(self, source: IConfigSource) -> None:
         raise NotImplemented()
 
     @abstractmethod
-    def build(self) -> IConfigurationSection:
+    def build(self) -> IConfigSection:
         raise NotImplemented()
 
     @abstractmethod
-    def add_configuration(self, conf: IConfigurationSection):
+    def add_configuration(self, conf: IConfigSection):
         raise NotImplemented()

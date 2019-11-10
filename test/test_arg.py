@@ -1,15 +1,15 @@
 import unittest
 from argparse import ArgumentParser
 
-from dnry.configuration.arg import ArgumentSource
-from dnry.configuration import ConfigurationFactory
+from dnry.config.arg import ArgumentSource
+from dnry.config import ConfigFactory
 
 
 class TestArgSource(unittest.TestCase):
     def test_single_key(self):
         ap = ArgumentParser()
         ap.add_argument('-f', '--foo')
-        fact = ConfigurationFactory()
+        fact = ConfigFactory()
         fact.add_source(ArgumentSource(ap, ["--foo", "bar"]))
         conf = fact.build()
         self.assertEqual("bar", conf.get("foo"))
@@ -17,7 +17,7 @@ class TestArgSource(unittest.TestCase):
     def test_single_key(self):
         ap = ArgumentParser()
         ap.add_argument('-f', '--foo')
-        fact = ConfigurationFactory()
+        fact = ConfigFactory()
         fact.add_source(ArgumentSource(ap, ["--foo", "baz"]))
         conf = fact.build()
         self.assertEqual("baz", conf.get("foo"))
@@ -25,7 +25,7 @@ class TestArgSource(unittest.TestCase):
     def test_nested_key(self):
         ap = ArgumentParser()
         ap.add_argument('-f', '--foo:bar')
-        fact = ConfigurationFactory()
+        fact = ConfigFactory()
         fact.add_source(ArgumentSource(ap, ["--foo:bar", "baz"]))
         conf = fact.build()
         self.assertEqual("baz", conf.get("foo:bar"))
@@ -35,7 +35,7 @@ class TestArgSource(unittest.TestCase):
         ap.add_argument('--foo:bar')
         ap.add_argument('--bar')
         ap.add_argument('--foo:baz')
-        fact = ConfigurationFactory()
+        fact = ConfigFactory()
         fact.add_source(ArgumentSource(ap, ["--foo:bar", "a", "--bar", "b", "--foo:baz", "c"]))
         conf = fact.build()
         self.assertEqual("a", conf.get("foo:bar"))

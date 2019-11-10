@@ -1,10 +1,10 @@
-from dnry.configuration import ConfigurationFactory
-from dnry.configuration.in_memory import InMemorySource
+from dnry.config import ConfigFactory
+from dnry.config.in_memory import InMemorySource
 
 
 def main():
     print("Reads values from an in-memory configuration\n")
-    fact = ConfigurationFactory()
+    fact = ConfigFactory()
     fact.add_source(InMemorySource({
         "key": {"one": "value"}
     }));

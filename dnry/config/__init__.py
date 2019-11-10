@@ -1,3 +1,3 @@
-from dnry.configuration.factory import ConfigurationFactory
-from dnry.configuration.section import ConfigurationSection
-from dnry.configuration.types import IConfigurationSection, IConfigurationSource, IConfigurationFactory
+from dnry.config.factory import ConfigFactory
+from dnry.config.section import ConfigSection
+from dnry.config.types import IConfigSection, IConfigSource, IConfigFactory

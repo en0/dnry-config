@@ -1,1 +1,1 @@
-from dnry.configuration.delegate.source import DelegateSource
+from dnry.config.delegate.source import DelegateSource

@@ -5,8 +5,8 @@ from yaml.parser import ParserError
 import tempfile
 import unittest
 
-from dnry.configuration import ConfigurationFactory
-from dnry.configuration.yaml import YamlSource
+from dnry.config import ConfigFactory
+from dnry.config.yaml import YamlSource
 
 
 def make_config_with_temp(data: dict):
@@ -14,7 +14,7 @@ def make_config_with_temp(data: dict):
     try:
         with open(file, 'w') as fd:
             yaml.dump(data, stream=fd, Dumper=yaml.SafeDumper)
-        factory = ConfigurationFactory()
+        factory = ConfigFactory()
         factory.add_source(YamlSource(file))
         return factory.build()
     finally:
@@ -39,7 +39,7 @@ class TestYamlSource(unittest.TestCase):
         try:
             with open(file, 'w') as fd:
                 fd.write(':')
-            factory = ConfigurationFactory()
+            factory = ConfigFactory()
             factory.add_source(YamlSource(file))
             conf = factory.build()
         except ParserError:

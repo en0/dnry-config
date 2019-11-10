@@ -1,9 +1,9 @@
 from typing import Union
 
-from dnry.configuration.types import IConfigurationSection
+from dnry.config.types import IConfigSection
 
 
-class ConfigurationSection(IConfigurationSection):
+class ConfigSection(IConfigSection):
     """Basic configuration section implementation.
 
     The basic implementation provides access to nested key values
@@ -36,8 +36,8 @@ class ConfigurationSection(IConfigurationSection):
                 return None
         return root
 
-    def get_section(self, key: str) -> Union["IConfigurationSection", None]:
+    def get_section(self, key: str) -> Union["IConfigSection", None]:
         val = self.get(key)
         if isinstance(val, dict):
-            return ConfigurationSection(val)
+            return ConfigSection(val)
         return None

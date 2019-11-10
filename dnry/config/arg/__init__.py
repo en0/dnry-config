@@ -1,1 +1,1 @@
-from dnry.configuration.arg.source import ArgumentSource
+from dnry.config.arg.source import ArgumentSource

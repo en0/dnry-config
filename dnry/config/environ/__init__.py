@@ -1,1 +1,1 @@
-from dnry.configuration.environ.source import EnvironmentSource
+from dnry.config.environ.source import EnvironmentSource

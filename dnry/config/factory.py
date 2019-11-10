@@ -1,11 +1,11 @@
 from typing import List, Any
 
-from dnry.configuration.section import ConfigurationSection
-from dnry.configuration.helpers import merge
-from dnry.configuration.types import IConfigurationFactory, IConfigurationSource, IConfigurationSection
+from dnry.config.section import ConfigSection
+from dnry.config.helpers import merge
+from dnry.config.types import IConfigFactory, IConfigSource, IConfigSection
 
 
-class ConfigurationFactory(IConfigurationFactory):
+class ConfigFactory(IConfigFactory):
     """Builds a single configuration section from a set of configuration sources.
 
     Configuration sources will be loaded and merged in order. If configuration sources
@@ -19,25 +19,25 @@ class ConfigurationFactory(IConfigurationFactory):
     ConfigurationFactory.Section. Note: you must accept a single dict in __init__.
     """
 
-    __explicit_configs: List[IConfigurationSection]
-    __sources: List[IConfigurationSource]
-    Section = ConfigurationSection
+    __explicit_configs: List[IConfigSection]
+    __sources: List[IConfigSource]
+    Section = ConfigSection
     merge = merge
 
-    def __init__(self, sources: List[IConfigurationSource] = None):
+    def __init__(self, sources: List[IConfigSource] = None):
         self.__explicit_configs = list()
         self.__sources = sources or list()
 
-    def add_source(self, source: IConfigurationSource) -> None:
+    def add_source(self, source: IConfigSource) -> None:
         self.__sources.append(source)
 
-    def add_configuration(self, conf: IConfigurationSection):
+    def add_configuration(self, conf: IConfigSection):
         self.__explicit_configs.append(conf)
 
-    def build(self) -> IConfigurationSection:
+    def build(self) -> IConfigSection:
         context = {}
         for source in self.__sources:
-            context = ConfigurationFactory.merge(context, source.load(self, ConfigurationFactory.Section(context)))
+            context = ConfigFactory.merge(context, source.load(self, ConfigFactory.Section(context)))
         for conf in self.__explicit_configs:
-            context = ConfigurationFactory.merge(context, vars(conf))
-        return ConfigurationFactory.Section(context)
+            context = ConfigFactory.merge(context, vars(conf))
+        return ConfigFactory.Section(context)

@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
 
-from dnry.configuration import ConfigurationFactory
-from dnry.configuration.arg import ArgumentSource
-from dnry.configuration.environ import EnvironmentSource
-from dnry.configuration.in_memory import InMemorySource
-from dnry.configuration.yaml import YamlSource
+from dnry.config import ConfigFactory
+from dnry.config.arg import ArgumentSource
+from dnry.config.environ import EnvironmentSource
+from dnry.config.in_memory import InMemorySource
+from dnry.config.yaml import YamlSource
 
 
 def main():
@@ -26,7 +26,7 @@ def main():
     ap.add_argument("--app:key1")
     ap.add_argument("--app:key2")
 
-    fact = ConfigurationFactory()
+    fact = ConfigFactory()
     fact.add_source(InMemorySource(defaults))
     fact.add_source(EnvironmentSource("SAMPLE"))
     fact.add_source(YamlSource("./config1.yaml", False))

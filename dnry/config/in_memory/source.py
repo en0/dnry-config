@@ -1,10 +1,10 @@
-from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
+from dnry.config.types import IConfigSource, IConfigFactory, IConfigSection
 
 
-class InMemorySource(IConfigurationSource):
+class InMemorySource(IConfigSource):
     """Read configuration values from a dictionary"""
     def __init__(self, data: dict):
         self.__data = data
 
-    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
+    def load(self, fact: IConfigFactory, conf: IConfigSection) -> dict:
         return self.__data

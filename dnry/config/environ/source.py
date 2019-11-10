@@ -1,10 +1,10 @@
 import os
 
-from dnry.configuration.helpers import explode
-from dnry.configuration.types import IConfigurationSource, IConfigurationFactory, IConfigurationSection
+from dnry.config.helpers import explode
+from dnry.config.types import IConfigSource, IConfigFactory, IConfigSection
 
 
-class EnvironmentSource(IConfigurationSource):
+class EnvironmentSource(IConfigSource):
     """Read configuration values from Environment Variables.
 
     Reads all environment variables available to the process
@@ -18,7 +18,7 @@ class EnvironmentSource(IConfigurationSource):
     def __init__(self, prefix: str = None):
         self.__prefix = prefix or ""
 
-    def load(self, fact: IConfigurationFactory, conf: IConfigurationSection) -> dict:
+    def load(self, fact: IConfigFactory, conf: IConfigSection) -> dict:
         val = {
             key[len(self.__prefix):].lstrip('_'): value
             for key, value

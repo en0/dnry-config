@@ -1,10 +1,10 @@
-from dnry.configuration import ConfigurationFactory
-from dnry.configuration.yaml import YamlSource
+from dnry.config import ConfigFactory
+from dnry.config.yaml import YamlSource
 
 
 def main():
     print("Edit the ./config1.yaml to change values.\n")
-    factory = ConfigurationFactory()
+    factory = ConfigFactory()
     factory.add_source(YamlSource("./config1.yaml"))
     conf = factory.build()
     print("Key one is", conf.get("key:one"))
