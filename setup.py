@@ -8,7 +8,7 @@ with open('README.md', "r") as f:
 
 setup(
     name='dnry_config',
-    version='0.1.0',
+    version='0.1.4',
     author='Ian Laird',
     author_email='irlaird@gmail.com',
     url='https://github.com/en0/dnry-config',
