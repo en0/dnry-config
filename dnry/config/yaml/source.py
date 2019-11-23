@@ -17,6 +17,9 @@ class YamlSource(IConfigSource):
             paths = ",".join(self.__paths)
             raise RuntimeError(f"Configuration Error: None of these paths could be found: {paths}")
 
+        elif path is None and not self.__required:
+            return dict()
+
         with open(path, 'r') as f:
             return yaml.load(f, Loader=self.__loader) or dict()
 
