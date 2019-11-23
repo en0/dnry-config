@@ -18,7 +18,7 @@ class YamlSource(IConfigSource):
             raise RuntimeError(f"Configuration Error: None of these paths could be found: {paths}")
 
         with open(path, 'r') as f:
-            return yaml.load(f, Loader=self.__loader)
+            return yaml.load(f, Loader=self.__loader) or dict()
 
     def __get_first_existing_path(self) -> Union[str, None]:
         try:
